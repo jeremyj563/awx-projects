@@ -1,0 +1,9 @@
+# file: playbook-choco-install-rufus.yml
+---
+- name: Install Rufus using Chocolatey
+  hosts: all
+  tasks:
+    - name: Install Rufus
+      win_chocolatey:
+        name: rufus
+        state: present

@@ -1,0 +1,9 @@
+# file: playbook-choco-uninstall-rufus.yml
+---
+- name: Uninstall Rufus using Chocolatey
+  hosts: all
+  tasks:
+    - name: Uninstall Rufus
+      win_chocolatey:
+        name: rufus
+        state: absent
