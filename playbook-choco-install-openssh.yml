@@ -1,0 +1,10 @@
+# file: playbook-choco-install-openssh.yml
+---
+- name: Install OpenSSH using Chocolatey
+  hosts: all
+  tasks:
+    - name: Install OpenSSH
+      win_chocolatey:
+        name: openssh
+        package_params: '"/SSHAgentFeature /SSHServerFeature"'
+        state: present
