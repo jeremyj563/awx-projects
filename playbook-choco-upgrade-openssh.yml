@@ -1,0 +1,10 @@
+# file: playbook-choco-upgrade-openssh.yml
+---
+- name: Upgrade OpenSSH using Chocolatey
+  hosts: all
+  tasks:
+    - name: Upgrade OpenSSH to latest
+      win_chocolatey:
+        name: openssh
+        install_args: '"/SSHAgentFeature /SSHServerFeature"'
+        state: latest
