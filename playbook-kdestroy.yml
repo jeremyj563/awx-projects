@@ -1,0 +1,9 @@
+# file: playbook-kdestroy.yml
+---
+- name: kdestroy on localhost running ansible
+  hosts: 127.0.0.1
+  gather_facts: no
+  connection: local
+  tasks:
+    - name: Destroy Kerberos TGT
+      local_action: command kdestroy
