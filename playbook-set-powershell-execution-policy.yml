@@ -5,4 +5,4 @@
   gather_facts: no
   tasks:
     - name: Set PowerShell execution policy
-      win_shell: Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted -Force
+      win_shell: Set-ExecutionPolicy -Scope {{ scope }} -ExecutionPolicy {{ policy }} -Force
