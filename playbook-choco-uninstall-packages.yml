@@ -1,0 +1,13 @@
+# file: playbook-choco-uninstall-packages.yml
+---
+- name: Uninstall a list of packages using Chocolatey
+  hosts: all
+  tasks:
+    - name: Bring packages list to absent state
+      win_chocolatey:
+        name: {{ packages }}
+        state: absent
+      register: result
+
+    - debug:
+        var: result
