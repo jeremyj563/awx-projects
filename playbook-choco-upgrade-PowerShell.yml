@@ -1,9 +1,0 @@
-# file: playbook-choco-upgrade-PowerShell.yml
----
-- name: Upgrade PowerShell using Chocolatey
-  hosts: all
-  tasks:
-    - name: Upgrade PowerShell to latest
-      win_chocolatey:
-        name: powershell
-        state: latest

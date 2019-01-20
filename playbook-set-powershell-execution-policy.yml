@@ -1,8 +1,0 @@
-# file: playbook-set-powershell-execution-policy.yml
----
-- name: Set PowerShell execution policy to "Unrestricted" for the current user
-  hosts: all
-  gather_facts: no
-  tasks:
-    - name: Set PowerShell execution policy
-      win_shell: Set-ExecutionPolicy -Scope {{ scope }} -ExecutionPolicy {{ policy }} -Force
