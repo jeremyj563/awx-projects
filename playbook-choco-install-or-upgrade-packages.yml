@@ -1,0 +1,13 @@
+# file: playbook-choco-install-or-upgrade-packages.yml
+---
+- name: Install or upgrade a list of packages using Chocolatey
+  hosts: all
+  tasks:
+    - name: Bring packages list to latest version
+      win_chocolatey:
+        name: {{ packages }}
+        state: latest
+      register: result
+
+    - debug:
+        var: result
