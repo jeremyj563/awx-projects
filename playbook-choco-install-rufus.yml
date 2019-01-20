@@ -6,8 +6,7 @@
     - name: Install Rufus
       win_chocolatey:
         name: rufus
-        state: present
+        state: reinstalled
         register: result
     - debug:
-        var: result.command
-        var: result.stdout
+        var: result
