@@ -7,3 +7,7 @@
       win_chocolatey:
         name: rufus
         state: present
+        register: result
+    - debug:
+        var: result.command
+        var: result.stdout
