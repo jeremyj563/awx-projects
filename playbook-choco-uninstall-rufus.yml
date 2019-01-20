@@ -7,3 +7,7 @@
       win_chocolatey:
         name: rufus
         state: absent
+      register: result
+
+    - debug:
+        var: result

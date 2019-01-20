@@ -8,5 +8,6 @@
         name: rufus
         state: reinstalled
       register: result
+
     - debug:
         var: result
