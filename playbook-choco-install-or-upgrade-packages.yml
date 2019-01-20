@@ -5,8 +5,8 @@
   tasks:
     - name: Bring packages list to latest version state
       win_chocolatey:
-        name: {{ packages }}
-        package_params: {{ params }}
+        name: "{{ packages }}"
+        package_params: "{{ params }}"
         state: latest
       register: result
 

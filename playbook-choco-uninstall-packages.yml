@@ -5,8 +5,8 @@
   tasks:
     - name: Bring packages list to absent state
       win_chocolatey:
-        name: {{ packages }}
-        package_params: {{ params }}
+        name: "{{ packages }}"
+        package_params: "{{ params }}"
         state: absent
       register: result
 
