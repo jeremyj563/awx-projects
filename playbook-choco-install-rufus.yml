@@ -7,6 +7,6 @@
       win_chocolatey:
         name: rufus
         state: reinstalled
-        register: result
+      register: result
     - debug:
         var: result
