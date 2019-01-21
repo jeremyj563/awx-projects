@@ -15,7 +15,7 @@
       register: package_result
 
     - name: Ensure KeePass is running (with config)
-      win_shell: '"%ProgramFiles(x86)%\KeePass Password Safe 2\KeePass.exe" {{ kdbx_path }} -preselect:{{ key_path }} -cfg-local:{{ config_path }}'
+      win_shell: '"C:\Program Files (x86)\KeePass Password Safe 2\KeePass.exe" {{ kdbx_path }} -preselect:{{ key_path }} -cfg-local:{{ config_path }}'
       args:
         executable: cmd
       become: yes
