@@ -1,0 +1,37 @@
+# file: playbook-choco-reinstall-openssh.yml
+---
+- name: Reinstall OpenSSH using Chocolatey
+  hosts: all
+  tasks:
+    - name: Uninstall Chocolatey package
+      win_chocolatey:
+        name: "openssh"
+        skip_scripts: yes
+        state: absent
+      register: uninstall_package_result
+    
+    - name: Delete service: sshd
+      win_service:
+        name: "sshd"
+        state: absent
+      register: delete_sshd_service_result
+
+    - name: Delete service: ssh-agent
+      win_service:
+        name: "ssh-agent"
+        state: absent
+      register: delete_ssh-agent_service_result
+
+    - name: Install Chocolatey package
+      win_chocolatey:
+        name: "openssh"
+        skip_scripts: no
+        package_params: '"/SSHAgentFeature /SSHServerFeature"'
+        state: latest
+      register: install_package_result
+
+    - debug:
+        var: uninstall_package_result
+        var: delete_sshd_service_result
+        var: delete_ssh-agent_service_result
+        var: install_package_result
