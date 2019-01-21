@@ -27,5 +27,4 @@
     - debug:
         var: stop_result
         var: package_result
-        var: smb_result
         var: start_result
