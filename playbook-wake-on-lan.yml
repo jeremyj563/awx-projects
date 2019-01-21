@@ -1,0 +1,15 @@
+# file: playbook-wake-on-lan.yml
+---
+- name: Send magic packet to 'lyd-office'
+  wakeonlan:
+    mac: 00:30:48:D3:7B:47
+    port: 9
+    broadcast: 192.168.192.255
+  delegate_to: localhost
+
+- name: Send magic packet to 'upstairs-htpc'
+- wakeonlan:
+    mac: 84:2B:2B:AB:86:39
+    port: 9
+    broadcast: 192.168.192.255
+  delegate_to: localhost
