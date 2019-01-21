@@ -1,9 +1,0 @@
-# file: playbook-kinit.yml
----
-- name: kinit on localhost running ansible
-  hosts: 127.0.0.1
-  gather_facts: no
-  connection: local
-  tasks:
-    - name: Obtain Kerberos TGT
-      local_action: command kinit awx@JERLYD.COM -kt /etc/awx.keytab
