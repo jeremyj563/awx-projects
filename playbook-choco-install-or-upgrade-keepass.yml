@@ -15,7 +15,8 @@
       register: package_result
 
     - name: Ensure KeePass is running (with config)
-      win_shell: 'net use {{ smb_share }} /user:{{ smb_user }} {{ smb_pass }} && "C:\Program Files (x86)\KeePass Password Safe 2\KeePass.exe" {{ kdbx_path }} -preselect:{{ key_path }} -cfg-local:{{ config_path }} && net use {{ smb_share }} /delete'
+      win_command: 'net use {{ smb_share}} /user:{{ smb_user }} {{ smb_pass }} /persistent:yes'
+      win_shell: '"C:\Program Files (x86)\KeePass Password Safe 2\KeePass.exe" {{ kdbx_path }} -preselect:{{ key_path }} -cfg-local:{{ config_path }}'
       args:
         executable: cmd
       register: start_result
