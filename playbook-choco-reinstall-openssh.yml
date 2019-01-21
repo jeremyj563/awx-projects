@@ -10,13 +10,13 @@
         state: absent
       register: uninstall_package_result
     
-    - name: Delete service: sshd
+    - name: Delete service - sshd
       win_service:
         name: "sshd"
         state: absent
       register: delete_sshd_service_result
 
-    - name: Delete service: ssh-agent
+    - name: Delete service - ssh-agent
       win_service:
         name: "ssh-agent"
         state: absent
