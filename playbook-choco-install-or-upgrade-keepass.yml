@@ -4,9 +4,7 @@
   hosts: all
   tasks:
     - name: Ensure KeePass process is not running
-      win_command: powershell.exe
-      args:
-        stdin: 'Stop-Process -Name "KeePass" -Confirm:$false'
+      win_shell: 'Stop-Process -Name "KeePass" -Confirm:$false'
       register: stop_result
 
     - name: Bring KeePass package to latest version state
