@@ -1,0 +1,25 @@
+# file: playbook-choco-install-or-upgrade-keepass.yml
+---
+- name: Install or upgrade KeePass using Chocolatey
+  hosts: all
+  tasks:
+    - name: Ensure KeePass process is not running
+      win_command: powershell.exe -
+      args:
+        stdin: Stop-Process -Name "KeePass" -Confirm:$false
+      register: stop_result
+
+    - name: Bring KeePass package to latest version state
+      win_chocolatey:
+        name: "keepass"
+        state: latest
+      register: package_result
+
+    - name: Ensure KeePass is running (with config)
+      win_command: "%ProgramFiles(x86)%\KeePass Password Safe 2\KeePass.exe" "{{ kdbx_path }}" -preselect:"{{ key_path }}" -cfg-local:"{{ config_path }}"
+      register: start_result
+
+    - debug:
+        var: stop_result
+        var: package_result
+        var: start_result
