@@ -14,14 +14,6 @@
         state: latest
       register: package_result
 
-    - name: Ensure KeePass is running (with config)
-      win_command: 'runas /netonly /user:{{ smb_user }} "KeePass.exe {{ kdbx_path }} -preselect:{{ key_path }} -cfg-local:{{ config_path }}"'
-      args:
-        chdir: 'C:\Program Files (x86)\KeePass Password Safe 2\'
-        stdin: "{{ smb_pass }}"
-      register: start_result
-
     - debug:
         var: stop_result
         var: package_result
-        var: start_result
