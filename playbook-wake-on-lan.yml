@@ -2,6 +2,7 @@
 ---
 - name: Wake On LAN Windows clients
   hosts: all
+  connection: local
   tasks:
     - name: Send magic packet to 'lyd-office'
       wakeonlan:
