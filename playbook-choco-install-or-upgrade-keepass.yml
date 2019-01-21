@@ -14,14 +14,14 @@
         state: latest
       register: package_result
 
-    - name: Connect to SMB share
-        win_command: 'net use {{ smb_share}} /user:{{ smb_user }} {{ smb_pass }} /persistent:yes'
-        register: smb_result
-
     - name: Ensure KeePass is running (with config)
-      win_shell: '"C:\Program Files (x86)\KeePass Password Safe 2\KeePass.exe" {{ kdbx_path }} -preselect:{{ key_path }} -cfg-local:{{ config_path }}'
-      args:
-        executable: cmd
+      win_command: '"C:\Program Files (x86)\KeePass Password Safe 2\KeePass.exe" {{ kdbx_path }} -preselect:{{ key_path }} -cfg-local:{{ config_path }}'
+      become: yes
+      become_method: runas
+      become_flags: logon_type=new_credentials logon_flags=netcredentials_only
+      vars:
+        ansible_become_user: "{{ smb_user }}"
+        ansile_become_pass: "{{ smb_pass }}"
       register: start_result
 
     - debug:
