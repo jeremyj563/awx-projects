@@ -6,7 +6,8 @@
     - name: Bring packages list to latest version state
       win_chocolatey:
         name: "{{ packages }}"
-        package_params: "{{ params }}"
+        skip_scripts: "{{ skip_scripts }}"
+        package_params: "{{ package_params }}"
         state: latest
       register: result
 
