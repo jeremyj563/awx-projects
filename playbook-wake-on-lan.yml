@@ -8,3 +8,18 @@
 
     - name: Send magic packet to 'upstairs-htpc'
       command: /usr/bin/wakeonlan 84:2B:2B:AB:86:39
+
+    - name: Send magic packet to 'nat-bedroom'
+      command: /usr/bin/wakeonlan 48:51:B7:1C:76:1D
+
+    - name: Ping 'lyd-office'
+      net_ping:
+        dest: lyd-office
+
+    - name: Ping 'upstairs-htpc'
+      net_ping:
+        dest: upstairs-htpc
+
+    - name: Ping 'nat-bedroom'
+      net_ping:
+        dest: nat-bedroom
