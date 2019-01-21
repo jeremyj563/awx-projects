@@ -5,7 +5,3 @@
   tasks:
     - name: Ping
       ping:
-      register: result
-
-    - debug:
-      var: result
