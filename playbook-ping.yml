@@ -1,0 +1,11 @@
+# file: playbook-ping.yml
+---
+- name: Ping all inventory hosts
+  hosts: all
+  tasks:
+    - name: Ping
+      ping:
+      register: result
+
+    - debug:
+      var: result
