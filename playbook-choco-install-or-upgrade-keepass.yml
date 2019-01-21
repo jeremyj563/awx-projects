@@ -4,9 +4,9 @@
   hosts: all
   tasks:
     - name: Ensure KeePass process is not running
-      win_command: powershell.exe -
+      win_command: powershell.exe
       args:
-        stdin: Stop-Process -Name "KeePass" -Confirm:$false
+        stdin: 'Stop-Process -Name "KeePass" -Confirm:$false'
       register: stop_result
 
     - name: Bring KeePass package to latest version state
@@ -16,7 +16,7 @@
       register: package_result
 
     - name: Ensure KeePass is running (with config)
-      win_command: "%ProgramFiles(x86)%\\KeePass Password Safe 2\\KeePass.exe {{ kdbx_path }} -preselect:{{ key_path }} -cfg-local:{{ config_path }}"
+      win_command: '%ProgramFiles(x86)%\\KeePass Password Safe 2\\KeePass.exe {{ kdbx_path }} -preselect:{{ key_path }} -cfg-local:{{ config_path }}'
       register: start_result
 
     - debug:
