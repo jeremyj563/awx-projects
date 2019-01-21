@@ -15,15 +15,10 @@
       register: package_result
 
     - name: Ensure KeePass is running (with config)
-      win_command: 'KeePass.exe {{ kdbx_path }} -preselect:{{ key_path }} -cfg-local:{{ config_path }}'
+      win_command: 'runas /netonly /user:{{ smb_user }} "KeePass.exe {{ kdbx_path }} -preselect:{{ key_path }} -cfg-local:{{ config_path }}"'
       args:
         chdir: 'C:\Program Files (x86)\KeePass Password Safe 2\'
-      become: yes
-      become_method: runas
-      become_flags: logon_type=new_credentials logon_flags=netcredentials_only
-      vars:
-        ansible_become_user: "{{ smb_user }}"
-        ansile_become_pass: "{{ smb_pass }}"
+        stdin: "{{ smb_pass }}"
       register: start_result
 
     - debug:
