@@ -1,7 +1,9 @@
 # file: playbook-wake-on-lan.yml
 ---
 - name: Wake On LAN Windows clients
-  hosts: all
+  hosts: 127.0.0.1
+  gather_facts: no
+  connection: local
   tasks:
     - name: Send magic packet to 'lyd-office'
       wakeonlan:
