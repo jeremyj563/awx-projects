@@ -4,7 +4,9 @@
   hosts: all
   tasks:
     # Set AC 'Sleep after' setting to 'Never'
-    - import_tasks: playbook-powercfg-set-sleep.yml sleep_after_value="0"
+    - import_tasks: playbook-powercfg-set-sleep.yml
+      vars:
+        sleep_after_value: 0
 
     - name: Bring packages list to latest version state
       win_chocolatey:
@@ -15,7 +17,9 @@
       register: result
 
     # Set AC 'Sleep after' setting to '30 minutes'
-    - import_tasks: playbook-powercfg-set-sleep.yml sleep_after_value="1800"
+    - import_tasks: playbook-powercfg-set-sleep.yml
+      vars:
+        sleep_after_value: 1800
 
     - debug:
         var: result
