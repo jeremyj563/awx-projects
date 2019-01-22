@@ -1,0 +1,11 @@
+# file: playbook-powercfg-set-sleep.yml
+---
+- name: Set AC 'Sleep after' setting to specified value (in seconds)
+  hosts: all
+  tasks:
+    - name: Set value
+      win_command: 'POWERCFG /SETACVALUEINDEX 381b4222-f694-41f0-9685-ff5bb260df2e 238c9fa8-0aad-41ed-83f4-97be242c8f20 29f6c1db-86da-48c5-9fdb-f2b67b1f44da {{ sleep_after_value }}'
+      register: result
+
+    - debug:
+      var: result
