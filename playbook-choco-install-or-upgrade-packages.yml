@@ -3,7 +3,7 @@
 - name: Install or upgrade a list of packages using Chocolatey
   hosts: all
   tasks:
-    - name: Set AC 'Sleep after' setting to 'Never'
+    # Set AC 'Sleep after' setting to 'Never'
     - import_tasks: playbook-powercfg-set-sleep.yml sleep_after_value=0
 
     - name: Bring packages list to latest version state
@@ -14,8 +14,8 @@
         state: latest
       register: result
 
-    - name: Set AC 'Sleep after' setting to '30 minutes'
-      import_tasks: playbook-powercfg-set-sleep.yml sleep_after_value=1800
+    # Set AC 'Sleep after' setting to '30 minutes'
+    - import_tasks: playbook-powercfg-set-sleep.yml sleep_after_value=1800
 
     - debug:
         var: result
