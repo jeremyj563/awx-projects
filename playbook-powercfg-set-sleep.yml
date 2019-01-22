@@ -1,6 +1,6 @@
 # file: playbook-powercfg-set-sleep.yml
 ---
-- name: Set AC 'Sleep after' setting to specified value (in seconds)
+- name: Set AC sleep setting to specified value in seconds
   hosts: all
   tasks:
     - name: Set value
