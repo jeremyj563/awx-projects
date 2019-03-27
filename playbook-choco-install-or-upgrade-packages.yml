@@ -8,13 +8,19 @@
       vars:
         sleep_after_value: 0
 
+    - name: Disable Chocolatey enhanced exit codes
+      win_chocolatey_feature:
+        name: useEnhancedExitCodes
+        state: disabled
+      register: disable_result
+    
     - name: Bring packages list to latest version state
       win_chocolatey:
         name: "{{ packages }}"
         skip_scripts: "{{ skip_scripts }}"
         package_params: "{{ package_params }}"
         state: latest
-      register: result
+      register: packages_result
 
     # Set AC 'Sleep after' setting to '30 minutes'
     - import_tasks: playbook-powercfg-set-sleep.yml
@@ -22,4 +28,5 @@
         sleep_after_value: 1800
 
     - debug:
-        var: result
+        var: disable_result
+        var: packages_result

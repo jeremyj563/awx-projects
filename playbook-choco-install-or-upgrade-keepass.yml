@@ -8,6 +8,12 @@
       ignore_errors: yes
       register: stop_result
 
+          - name: Disable Chocolatey enhanced exit codes
+      win_chocolatey_feature:
+        name: useEnhancedExitCodes
+        state: disabled
+      register: disable_result
+
     - name: Bring KeePass package to latest version state
       win_chocolatey:
         name: "keepass"
@@ -16,4 +22,5 @@
 
     - debug:
         var: stop_result
+        var: disable_result
         var: package_result
