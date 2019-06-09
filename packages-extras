@@ -1,0 +1,6 @@
+packages:
+  - handbrake
+  - kodi
+  - sql-server-management-studio
+  - steam
+  - wsl-ubuntu-1804
