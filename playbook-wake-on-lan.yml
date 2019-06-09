@@ -9,5 +9,8 @@
     - name: Send magic packet to 'upstairs-htpc'
       command: /usr/bin/wakeonlan 84:2B:2B:AB:86:39
 
+    - name: Send magic packet to 'jer-office'
+      command: /usr/bin/wakeonlan 00:14:D1:38:78:4B
+      
     - name: Send magic packet to 'nat-bedroom'
       command: /usr/bin/wakeonlan 48:51:B7:1C:76:1D
