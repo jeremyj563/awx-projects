@@ -19,6 +19,7 @@
         name: "{{ packages }}"
         skip_scripts: "{{ skip_scripts }}"
         package_params: "{{ package_params }}"
+        ignore_checksums: "{{ ignore_checksums }}"
         state: latest
       register: packages_result
 
