@@ -1,0 +1,25 @@
+packages:
+  - netbalancer
+  - keepass.install
+  - greenshot
+  - googlechrome
+  - jdownloader
+  - vscode
+  - git.install
+  - autohotkey
+  - 7zip.install
+  - vlc
+  - dropbox
+  - google-backup-and-sync
+  - hxd
+  - paint.net
+  - windirstat
+  - rufus
+  - lockhunter
+  - hashcheck
+  - mediainfo
+  - wsl
+  - rsat
+  - pstools
+  - which
+  - wget
