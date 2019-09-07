@@ -9,6 +9,10 @@
         skip_scripts: yes
         state: absent
       register: uninstall_package_result
+      
+    - name: Uninstall OpenSSH Capability
+      win_command: 'DISM /Online /Remove-Capability /CapabilityName:OpenSSH.Client~~~~0.0.1.0'
+      register: uninstall_capability_result
     
     - name: Delete service - sshd
       win_service:
@@ -32,6 +36,7 @@
 
     - debug:
         var: uninstall_package_result
+        var: uninstall_capability_result
         var: delete_sshd_service_result
         var: delete_ssh-agent_service_result
         var: install_package_result
